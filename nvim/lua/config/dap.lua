@@ -1,6 +1,13 @@
 local dap = require("dap")
 
-local mason = vim.fn.stdpath("data")
+-- 1. Get the base path for Mason packages (Cross-platform)
+local mason_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter"
+local debug_adapter_path = mason_path .. "/js-debug/src/dapDebugServer.js"
+
+-- 2. If on Windows, normalize path separators to backslashes
+if vim.fn.has("win32") == 1 then
+  debug_adapter_path = debug_adapter_path:gsub("/", "\\")
+end
 
 dap.adapters["pwa-node"] = {
   type = "server",
@@ -9,7 +16,7 @@ dap.adapters["pwa-node"] = {
   executable = {
     command = "node",
     args = {
-      mason .. "\\mason\\packages\\js-debug-adapter\\js-debug\\src\\dapDebugServer.js",
+      debug_adapter_path,
       "${port}",
     },
   },

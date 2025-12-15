@@ -136,6 +136,7 @@ Now that everything is linked, just run Neovim.
 - **Framework:** [LazyVim](https://www.lazyvim.org/)
 - **Theme:** Solarized Osaka
 - **Font:** JetBrains Mono Nerd Font (Required for icons)
+- **Debugger:** `nvim-dap` (configured for Node.js)
 - **Search Tools:** `ripgrep` (Grep), `fd` (Files), `fzf` (Fuzzy Finder)
 
 ## 📝 Cheatsheet
