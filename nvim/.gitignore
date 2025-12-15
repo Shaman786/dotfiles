@@ -11,6 +11,14 @@ data
 *~
 *.swp
 *.swo
+# Neovim cache & runtime
+/.lazy/
+/lazy-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
 
 # Ignore the lazy-lock.json IF you want to always update plugins on new machines
 # (Recommended: Keep lazy-lock.json committed so you get the exact same versions everywhere)
