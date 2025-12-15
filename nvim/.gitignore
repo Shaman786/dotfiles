@@ -1,0 +1,16 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+# Ignore cache and temporary files
+.netrwhist
+*~
+*.swp
+*.swo
+
+# Ignore the lazy-lock.json IF you want to always update plugins on new machines
+# (Recommended: Keep lazy-lock.json committed so you get the exact same versions everywhere)
