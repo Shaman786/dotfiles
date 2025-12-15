@@ -1,6 +1,8 @@
 local dap = require("dap")
 
--- 1. NODE.JS SETUP (Cross-Platform)
+-- =========================================
+-- 1. NODE.JS SETUP
+-- =========================================
 local mason_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter"
 local debug_adapter_path = mason_path .. "/js-debug/src/dapDebugServer.js"
 
@@ -27,29 +29,9 @@ dap.configurations.javascript = {
     cwd = "${workspaceFolder}",
   },
 }
-
 dap.configurations.typescript = dap.configurations.javascript
 
 -- =========================================
--- 2. GO SETUP (Add this section)
+-- 2. GO SETUP
 -- =========================================
--- This automatically configures the "delve" debugger
 require("dap-go").setup()
-
-local dap = require("dap")
-local dapui = require("dapui")
-
--- Setup the UI
-dapui.setup()
-
--- Open UI automatically when debugging starts
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
--- Close UI automatically when debugging ends
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
