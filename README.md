@@ -23,7 +23,7 @@ A comprehensive collection of my personal configuration files for **Neovim (Lazy
 
 ### 1\. Install Dependencies
 
-Before cloning this repo, you must install **Neovim** and its required build tools (**The "Big 3"**: GCC, Ripgrep, FD).
+Before cloning this repo, you must install **Git**, **Neovim**, and its required tools (**The "Big 3"**: GCC/Build Tools, Ripgrep, FD, Node.js/npm). **GNU Stow** is highly recommended for easy setup.
 
 #### 🪟 Windows (via Scoop)
 
@@ -36,21 +36,50 @@ irm get.scoop.sh | iex
 
 # 2. Install Neovim & Required Tools
 scoop bucket add extras
-scoop install neovim gcc ripgrep fd git nodejs 7zip
+scoop install neovim gcc ripgrep fd git nodejs 7zip stow
 ```
 
 #### 🍎 MacOS (via Homebrew)
 
 ```bash
-brew install neovim ripgrep fd node gcc
+brew install neovim ripgrep fd node git stow gcc
 ```
 
-#### 🐧 Linux (Ubuntu/Debian)
+#### 🐧 Linux (Universal)
+
+You must install **Neovim**, **Git**, essential **build tools** (like GCC), **Ripgrep**, **FD**, **Node.js**, and **Stow**. Select your distribution's package manager below.
+
+<details>
+<summary>Debian/Ubuntu/Pop!_OS (APT)</summary>
 
 ```bash
 sudo apt update
-sudo apt install neovim ripgrep fd-find build-essential nodejs npm
+sudo apt install neovim ripgrep fd-find build-essential nodejs npm git stow
 ```
+
+</details>
+
+<details>
+<summary>RHEL/Fedora/CentOS (DNF)</summary>
+
+```bash
+# Install common build tools (like GCC) and git
+sudo dnf groupinstall "Development Tools"
+sudo dnf install neovim ripgrep fd git nodejs npm stow
+```
+
+</details>
+
+<details>
+<summary>Arch/Manjaro (Pacman)</summary>
+
+```bash
+# Install base-devel for build tools
+sudo pacman -Syu
+sudo pacman -S neovim ripgrep fd git nodejs npm stow base-devel
+```
+
+</details>
 
 ---
 
@@ -87,7 +116,7 @@ New-Item -ItemType SymbolicLink -Path "$HOME\.tmux.conf" -Target "$HOME\dotfiles
 #### 🍎 MacOS / 🐧 Linux (Stow or Manual)
 
 **Option A: Using GNU Stow (Recommended)**
-_Requires `brew install stow` or `apt install stow`_
+_Requires Stow to be installed (see Step 1)_
 
 ```bash
 cd ~/dotfiles
@@ -118,7 +147,7 @@ Now that everything is linked, just run Neovim.
 2.  **Wait**: You will see a blue screen. LazyVim will automatically download:
     - The Plugin Manager (`lazy.nvim`)
     - Plugins (Theme, Dashboard, etc.)
-    - Language Servers (TypeScript, Lua, etc. via `Mason`)
+    - Language Servers (TypeScript, Go, etc. via `Mason`)
     - Treesitter Parsers (Syntax Highlighting)
 
 3.  **Verify**:
@@ -136,7 +165,7 @@ Now that everything is linked, just run Neovim.
 - **Framework:** [LazyVim](https://www.lazyvim.org/)
 - **Theme:** Solarized Osaka
 - **Font:** JetBrains Mono Nerd Font (Required for icons)
-- **Debugger:** `nvim-dap` (configured for Node.js)
+- **Debugger:** `nvim-dap` (configured for Node.js and Go)
 - **Search Tools:** `ripgrep` (Grep), `fd` (Files), `fzf` (Fuzzy Finder)
 
 ## 📝 Cheatsheet
